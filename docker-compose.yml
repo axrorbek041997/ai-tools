@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    container_name: ai_tool
+    ports:
+      - "${PORT:-8000}:8000"
