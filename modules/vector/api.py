@@ -1,4 +1,5 @@
 import io
+import os
 
 import numpy as np
 import torch
@@ -23,7 +24,7 @@ clip_processor = CLIPProcessor.from_pretrained(clip_model_name)
 device = "cuda" if torch.cuda.is_available() else "cpu"
 clip_model = clip_model.to(device)
 
-asr_model_name = "openai/whisper-tiny"
+asr_model_name = os.getenv("ASR_MODEL_NAME", "openai/whisper-base")
 asr = pipeline(
     task="automatic-speech-recognition",
     model=asr_model_name,
